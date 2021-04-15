@@ -80,6 +80,12 @@ Detener un contenedor
 docker stop alwaysup
 ```
 
+Detener y borrar contenedor
+
+```bash
+docker rm -f alwaysup
+```
+
 ## Exponer contenerdores
 
 Docker posee su propio stack de networking, para exponer el contenedor
@@ -110,3 +116,53 @@ Ver los últimas 10 líneas
 ```bash
 docker logs -tail 10 proxy
 ```
+
+## Bind mount 
+
+Correr mongo con nombre db
+
+```bash
+docker run -d --name db mongo
+```
+
+Montar una imagen, compartiendo carpeta local
+
+```bash
+docker run -d --name db -v local_path:path_imagen mongo
+```
+
+## Volumenes
+
+Crear un volumen
+
+```bash
+docker volume create dbdata
+```
+
+Ver los volumenes creados
+
+```bash
+docker volume ls
+```
+
+Ejecutar un contenedor usando un volumen específico
+
+```bash
+docker run -d --name db --mount src=dbdata,dst=/data/db
+```
+
+## Coapiar archivos
+
+Copiar archivo local en el contenedor
+
+```bash
+docker cp archivo_local contenedor:/ruta_en_el_contenedor
+```
+
+Copiar archivo del contenedor al ambiente local
+
+```bash
+docker cp contenedor:/ruta_en_el_contenedor ruta_local
+```
+
+Nota: los volumenes tmpfs, son para archivos que no persisten ó no nos interesa conservar
