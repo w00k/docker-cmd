@@ -42,7 +42,7 @@ ENTRYPOINT ["/bin/ping", "-c", "3"]
 CMD ["localhost"]
 ```
 
-Sino se ingresa parámetro de entrada, toma el valropode defecto 
+Sino se ingresa parámetro de entrada, toma el valor por defecto 
 
 ```bash
 docker run --name pinger ping
