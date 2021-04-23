@@ -57,3 +57,16 @@ docker run --name pinger ping google.com
 ## Dockerignore
 
 Archivo .dockerignore ignora archivos y extensiones
+
+## Multi-stage build
+
+Consiste en el dockerfile, tener un build con los test y seguido de eso el build con los recursos necesarios para el ambiente, en este caso agregar los fuentes de la imagen de test + todas las dependencias cacheadas en la imagen de test 
+
+## Docker in Docker
+
+Se puede correr docker en docker, apundando a socket del contenedor y ambos dockers podran ver lo mismo, solo para Mac y Linux.
+
+```bash 
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest 
+```
+
